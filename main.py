@@ -3,6 +3,11 @@ endornot = "n"
 gridmax = [11,7] # dimensions of the grid.
 gridrep=[]
 
+class Piece:
+	x = 0
+	y = 0
+	type = 'p'
+
 def alpha_to_num(x):
 	"""A function to change [a-g] into [0-6]
 
@@ -44,5 +49,5 @@ while endornot != 'c':
 	if endornot == 'g':
 		print_grid()
 	if endornot == 'r':
-		x = input("put in a letter, a to g")
-		print(alpha_to_num(x))
+		x=Piece()
+		print(x)
