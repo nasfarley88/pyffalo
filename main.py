@@ -1,12 +1,17 @@
 #!/usr/bin/python3.2
+import re
+
 endornot = "n"
 gridmax = [11,7] # dimensions of the grid.
 gridrep=[]
 
 class Piece:
+	"""A class for the pieces on the grid"""
 	x = 0
 	y = 0
 	type = 'p'
+	def return_piece(self):
+		return [self.x,self.y,self.type]
 
 def alpha_to_num(x):
 	"""A function to change [a-g] into [0-6]
@@ -44,10 +49,10 @@ for i in range(0,gridmax[1]):
 		gridrep[i].append('.')
 
 
+string = 'test string 123'
 while endornot != 'c':
 	endornot = input("(c)ontinue, (g)rid or (r)epeat\n")
 	if endornot == 'g':
 		print_grid()
 	if endornot == 'r':
-		x=Piece()
-		print(x)
+		print(string.count("ek"))
