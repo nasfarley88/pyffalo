@@ -3,6 +3,11 @@ endornot = "n"
 gridmax = [11,7] # dimensions of the grid.
 gridrep=[]
 
+def alpha_to_num(x):
+	if x == 'a': return 0
+	if x == 'b': return 1
+	if x == 'c': return 2
+
 def print_grid():
 	"""Prints the grid of play"""
 
@@ -30,3 +35,6 @@ while endornot != 'c':
 	endornot = input("(c)ontinue, (g)rid or (r)epeat\n")
 	if endornot == 'g':
 		print_grid()
+	if endornot == 'r':
+		x = input("put in a letter, a, b or c")
+		print(alpha_to_num(x))
