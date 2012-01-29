@@ -4,9 +4,17 @@ gridmax = [11,7] # dimensions of the grid.
 gridrep=[]
 
 def alpha_to_num(x):
+	"""A function to change [a-g] into [0-6]
+
+	This is just for the gridrep indicies"""
+
 	if x == 'a': return 0
 	if x == 'b': return 1
 	if x == 'c': return 2
+	if x == 'd': return 3
+	if x == 'e': return 4
+	if x == 'f': return 5
+	if x == 'g': return 6
 
 def print_grid():
 	"""Prints the grid of play"""
@@ -36,5 +44,5 @@ while endornot != 'c':
 	if endornot == 'g':
 		print_grid()
 	if endornot == 'r':
-		x = input("put in a letter, a, b or c")
+		x = input("put in a letter, a to g")
 		print(alpha_to_num(x))
