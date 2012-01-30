@@ -26,6 +26,28 @@ def alpha_to_num(x):
 	if x == 'f': return 5
 	if x == 'g': return 6
 
+def test_coord(x):
+	"""This function checks whether the coord is valid"""
+
+	test_str= re.findall('[a-z]',x)
+	testx = len(test_str)
+	# I should sort with the pickle module how it would change with gridmax
+	# Maybe some other time
+	test_str = re.findall('[0-9]',x)
+	testy = len(test_str)
+	if testx != 1 and testy != 1:
+		print('Invalid input')
+		return False
+	temp = len(re.findall('[a-g]',x)) + len(re.findall('[0-7]',x))
+	if temp != 2:
+		print('Coordinates out of range.')
+		return False
+	else:
+		# If the function gets this far, the coordinate should be good!
+		print('Good coordinates!') #TODO delete this after board is done.
+		return True
+
+
 def print_grid():
 	"""Prints the grid of play"""
 
@@ -48,11 +70,17 @@ for i in range(0,gridmax[1]):
 	for j in range(0,gridmax[0]):
 		gridrep[i].append('.')
 
+# put some pieces on the table.
+piece_list = []
+for i in range(0,gridmax[0]):
+	piece_list.append(Piece())
+	gridrep[6][i] = piece_list[i].type
+
+print_grid()
+
 
 string = 'test string 123'
 while endornot != 'c':
-	endornot = input("(c)ontinue, (g)rid or (r)epeat\n")
-	if endornot == 'g':
-		print_grid()
-	if endornot == 'r':
-		print(string.count("ek"))
+	endornot = input("Enter a coordinate:\n")
+	test_coord(endornot)
+
