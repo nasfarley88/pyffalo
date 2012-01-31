@@ -12,6 +12,26 @@ class Piece:
 	type = 'p'
 	def return_piece(self):
 		return [self.x,self.y,self.type]
+	def move(self):
+		start_coord = input('Please enter the co-ordinates of the piece you wish to move')
+		if test_coord(start_coord):
+			finish_coord = input('Where would you like to move it?')
+			if test_coord(finish_coord):
+				for i in range(0,len(piece_list)):
+					if piece_list[i].x == finish_coordx: break
+					if piece_list[i].y == finish_coordy: break
+
+
+def extract_x():
+	"""This is to get the x value from a human input of coordinates
+
+	This should only be run after test_coord()"""
+	x = input('test letter please')
+	y = re.search('[a-k]', x)
+	if y is MatchObject type:
+		print(y.pos)
+	print(x)
+
 
 def alpha_to_num(x):
 	"""A function to change [a-g] into [0-6]
@@ -25,6 +45,10 @@ def alpha_to_num(x):
 	if x == 'e': return 4
 	if x == 'f': return 5
 	if x == 'g': return 6
+	if x == 'h': return 7
+	if x == 'i': return 8
+	if x == 'j': return 9
+	if x == 'k': return 10
 
 def test_coord(x):
 	"""This function checks whether the coord is valid"""
@@ -35,7 +59,7 @@ def test_coord(x):
 	# Maybe some other time
 	test_str = re.findall('[0-9]',x)
 	testy = len(test_str)
-	if testx != 1 and testy != 1:
+	if testx != 1 or testy != 1:
 		print('Invalid input')
 		return False
 	temp = len(re.findall('[a-g]',x)) + len(re.findall('[0-7]',x))
@@ -83,4 +107,6 @@ string = 'test string 123'
 while endornot != 'c':
 	endornot = input("Enter a coordinate:\n")
 	test_coord(endornot)
+	if endornot == 'd':
+		extract_x()
 
