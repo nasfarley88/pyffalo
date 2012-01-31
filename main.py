@@ -28,8 +28,8 @@ def extract_x():
 	This should only be run after test_coord()"""
 	x = input('test letter please')
 	y = re.search('[a-k]', x)
-	if y is MatchObject type:
-		print(y.pos)
+	print(y.pos) # if y isn't a MatchObject, python breaks and moans. I need 
+		     # some way to check if it is a MatchObject
 	print(x)
 
 
