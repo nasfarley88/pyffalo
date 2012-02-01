@@ -22,15 +22,27 @@ class Piece:
 					if piece_list[i].y == finish_coordy: break
 
 
-def extract_x():
+def extract_x(x):
 	"""This is to get the x value from a human input of coordinates
 
 	This should only be run after test_coord()"""
-	x = input('test letter please')
-	y = re.search('[a-k]', x)
-	print(y.pos) # if y isn't a MatchObject, python breaks and moans. I need 
-		     # some way to check if it is a MatchObject
-	print(x)
+	# TODO time to extract the letter or number.
+	test_str_x = re.findall('[a-k]', x)
+	return alpha_to_num(test_str_x[0])
+
+def extract_y(y):
+	"""This is to get the y value from a human input of coordinates
+
+	This should only be run after test_coord()"""
+	# TODO time to extract the letter or number.
+	test_str_y = re.findall('[0-6]', y)
+	if test_str_y[0] == '0': return 0
+	if test_str_y[0] == '1': return 1
+	if test_str_y[0] == '2': return 2
+	if test_str_y[0] == '3': return 3
+	if test_str_y[0] == '4': return 4
+	if test_str_y[0] == '5': return 5
+	if test_str_y[0] == '6': return 6
 
 
 def alpha_to_num(x):
@@ -62,7 +74,7 @@ def test_coord(x):
 	if testx != 1 or testy != 1:
 		print('Invalid input')
 		return False
-	temp = len(re.findall('[a-g]',x)) + len(re.findall('[0-7]',x))
+	temp = len(re.findall('[a-k]',x)) + len(re.findall('[0-7]',x))
 	if temp != 2:
 		print('Coordinates out of range.')
 		return False
@@ -99,14 +111,17 @@ piece_list = []
 for i in range(0,gridmax[0]):
 	piece_list.append(Piece())
 	gridrep[6][i] = piece_list[i].type
+	# should really make a constructor for this
+	piece_list[i].x = i
+	piece_list[i].y = 6
+	# TODO Or do I want to just scan the grid?
 
 print_grid()
 
 
-string = 'test string 123'
 while endornot != 'c':
 	endornot = input("Enter a coordinate:\n")
-	test_coord(endornot)
-	if endornot == 'd':
-		extract_x()
-
+	if test_coord(endornot):
+		for i in range(0,len(piece_list)):
+			if piece_list[i].x == extract_x(endornot) and piece_list[i].y == extract_y(endornot):
+				print("Found one!")
